@@ -1,3 +1,5 @@
+// The reducers.js file is basically the schema of our database
+
 export default reducers = (state = {
     loggedIn: false,
     cards: [],
@@ -6,7 +8,7 @@ export default reducers = (state = {
       name: '',
       email: '',
       photoUrl: '',
-      images: [],
+      image: '',
       notification: false,
       show: false,
       report: false,

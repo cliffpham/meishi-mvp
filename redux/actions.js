@@ -1,6 +1,11 @@
 import * as firebase from 'firebase';
 import { Alert } from 'react-native';
 
+
+// Redux requires two files an action.js and a reducer.js. You can think of the action.js page
+// as the file that holds all of the functions that affect the state in some way 
+// i.e. logins, logout, updating user info
+
 export function login(user){
     return function(dispatch){
     let params = {
@@ -18,6 +23,10 @@ export function login(user){
       },
       token: '',
     }
+
+// how we log in the user and refer to whether they exist already and or need to be added to 
+//firebase
+
     firebase.database().ref('cards/').child(user.uid).once('value', function(snapshot){
       if(snapshot.val() !== null){
         dispatch({ type: 'LOGIN', user: snapshot.val(), loggedIn: true });
@@ -36,6 +45,9 @@ export function logout(){
      }
   }
 
+
+// this function is called on the Profile page and is called when the user presses a key 
+
 export function updateEmail(value){
     return function(dispatch){
       firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ email: value });
@@ -45,12 +57,11 @@ export function updateEmail(value){
       }, 3000);
     }
   }
-  
-export function Submit(){
-    return function(dispatch){
-    Alert.alert("Profile Updated!")
-    }
-  }
+ 
+// this function is called on the Home page and takes all of the current users 
+// and displays them accordingly.
+// we will need to edit this so that instead of taking all the cards it only
+//takes the data of IDs associated with it
 
 export function getCards(){
   return function(dispatch){
