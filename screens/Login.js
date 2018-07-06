@@ -58,6 +58,9 @@ class Login extends React.Component {
   }
 }
 
+// this is how we call upon the overall state manager we created through redux
+// specially here we are just requesting the state of loggedIn
+
 function mapStateToProps(state) {
   return {
     loggedIn: state.loggedIn

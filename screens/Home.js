@@ -22,8 +22,6 @@ class Home extends React.Component {
   
   }
 
-  
-
   componentDidMount(){
     this.props.dispatch(getCards())
     console.log(this.props.cards)
@@ -35,11 +33,8 @@ class Home extends React.Component {
       
       <View style={styles.container}>
 
-      
       <Buttons/>
       
-    
-     
       <ScrollView>
       {this.props.cards.map(card => (
         
@@ -60,10 +55,12 @@ class Home extends React.Component {
   }
 }
 
+//here we request cards which is an array of users accounted for in our firebase database
+
 function mapStateToProps(state) {
   return {
     cards: state.cards,
-    user: state.user
+ 
   };
 }
 

@@ -81,6 +81,8 @@ class Profile extends React.Component {
 
 }
 
+//Here we request the user state which we will use to modify individual users' info
+
 function mapStateToProps(state) {
   return {
     user: state.user
