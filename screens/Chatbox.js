@@ -10,11 +10,11 @@ import {
 class Chatbox extends React.Component {
   render() {
     return (
-        <View>
-          The # needs to be populated with the info passed from Chat to MessageList
-        </View>
+      <View>
+        The # needs to be populated with the info passed from Chat to MessageList
+      </View>
     )
-}
+  }
 }
 
 export default Chatbox

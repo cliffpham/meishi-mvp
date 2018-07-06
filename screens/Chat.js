@@ -13,26 +13,25 @@ import { tokenUrl, instanceLocator } from '../config/chatkit';
 
 class Chat extends React.Component {
     constructor() {
-    super()
-    this.state = {
+        super()
+        this.state = {
 
-        //im assumning this will be joined with information from the backend
+            //im assumning this will be joined with information from the backend
 
-        roomId: null,
-        messages: [],
-        joinableRooms: [],
-        joinedRooms: []
+            roomId: null,
+            messages: [],
+            joinableRooms: [],
+            joinedRooms: []
+        }
+        this.sendMessage = this.sendMessage.bind(this)
+        this.subscribeToRoom = this.subscribeToRoom.bind(this)
+        this.getRooms = this.getRooms.bind(this)
     }
-    this.sendMessage = this.sendMessage.bind(this)
-    this.subscribeToRoom = this.subscribeToRoom.bind(this)
-    this.getRooms = this.getRooms.bind(this)
-}
 
 // Throw API calls in componentDidMount 
 // ChatKit Code - connects to the API and creates a user and chatrooms
 
     componentDidMount() {
-
 
         const chatManager = new Chatkit.ChatManager({
             instanceLocator,
@@ -65,7 +64,7 @@ class Chat extends React.Component {
 
 //aka enter a room - user clicks on one of their friends and directs them to their shared chatroom 
     
-subscribeToRoom(roomId) {
+    subscribeToRoom(roomId) {
         //clears the message state so that the spread operator doesn't keep appending messages 
         this.setState({ messages: [] })        
         this.currentUser.subscribeToRoom({

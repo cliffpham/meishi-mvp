@@ -78,7 +78,6 @@ class Profile extends React.Component {
       </ScrollView>
     );
   }
-
 }
 
 //Here we request the user state which we will use to modify individual users' info
