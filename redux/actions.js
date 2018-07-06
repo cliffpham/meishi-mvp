@@ -52,7 +52,7 @@ export function updateEmail(value){
   return function(dispatch){
     firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ email: value });
     dispatch({ type: 'UPDATE_EMAIL', payload: value });
-    setTimeout(function(){  
+    setTimeout(function(){
       
     }, 3000);
   }
