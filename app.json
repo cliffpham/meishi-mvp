@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "expo-sanbox",
+    "description": "A very interesting project.",
+    "slug": "expo-sanbox",
+    "privacy": "public",
+    "sdkVersion": "28.0.0",
+    "FacebookAppID": "244021226377314",
+    "facebookDisplayName": "Sandbox",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
