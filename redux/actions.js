@@ -12,7 +12,7 @@ export function login(user){
       id: user.uid,
       name: user.displayName,
       email: '',
-      links: '',
+      links: null,
       photoUrl: user.photoURL,
       image: '',
       notification: false,
@@ -66,13 +66,15 @@ export function updateEmail(value){
 export function getCards(){
   return function(dispatch){
     firebase.database().ref('cards').once('value', (snap) => {
-      var items = [];
-      snap.forEach((child) => {
-        item = child.val();
-        item.id = child.key;
-        items.push(item); 
-      });
-      dispatch({ type: 'GET_CARDS', payload: items });
+      if(snap) {
+        var items = [];
+        snap.forEach((child) => {
+          item = child.val();
+          item.id = child.key;
+          items.push(item); 
+        });
+        dispatch({ type: 'GET_CARDS', payload: items });
+      }
     });
   }
 }
