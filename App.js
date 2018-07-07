@@ -8,21 +8,18 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 const middleware = applyMiddleware(thunkMiddleware)
 const store = createStore(reducers, middleware);
+console.ignoredYellowBox = ['Setting a timer'];
 
 export default class App extends React.Component {
 
-
   render() {
-    
-      return (
-
-          <Provider store={store}>
-          <Login/>
-          </Provider>
-
-      );
-    }
+    return (
+        <Provider store={store}>
+        <Login/>
+        </Provider>
+    );
   }
+}
 
 const styles = StyleSheet.create({
   container: {
