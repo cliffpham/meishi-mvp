@@ -19,8 +19,8 @@ export default class QRcode extends Component {
   };
 
   componentDidMount() {
-// when the QR page loads, we begin by requesting permission to use
-// the phone's camera 
+  // when the QR page loads, we begin by requesting permission to use
+  // the phone's camera 
     this._requestCameraPermission();
   }
 
@@ -41,22 +41,23 @@ export default class QRcode extends Component {
   render() {
     return (
 
-//Render for asking to use phone's camera
+      //Render for asking to use phone's camera
       <View style={styles.container}>
 
         {this.state.hasCameraPermission === null
           ? <Text>Requesting for camera permission</Text>
           : this.state.hasCameraPermission === false
-              ? <Text style={{ color: '#fff' }}>
-                  Camera permission is not granted
-                </Text>
-              : <BarCodeScanner
-                  onBarCodeRead={this._handleBarCodeRead}
-                  style={{
-                    height: Dimensions.get('window').height,
-                    width: Dimensions.get('window').width,
-                  }}
-                />}
+            ? <Text style={{ color: '#fff' }}>
+                Camera permission is not granted
+              </Text>
+            : <BarCodeScanner
+                onBarCodeRead={this._handleBarCodeRead}
+                style={{
+                  height: Dimensions.get('window').height,
+                  width: Dimensions.get('window').width,
+                }}
+              />
+        }
 
         {this._maybeRenderUrl()}
 

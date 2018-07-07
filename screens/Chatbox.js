@@ -5,8 +5,6 @@ import {
   View
 } from 'react-native'
 
-
-
 class Chatbox extends React.Component {
   render() {
     return (
@@ -18,17 +16,6 @@ class Chatbox extends React.Component {
 }
 
 export default Chatbox
-
-
-
-
-
-
-
-
-
-
-
 
 
 
