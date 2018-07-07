@@ -38,6 +38,7 @@ class Profile extends React.Component {
         style={styles.remove}
         flipHorizontal={true}
         flipVertical={false}
+        perspective={1000}
       >
   {/* Face Side */}
   
