@@ -36,7 +36,7 @@ export default class ProfileCard extends React.Component {
 
         {/* Back Side */}
         <View style={styles.cardBack}>
-          <Image style={{ width: 75, height: 75}} source={{uri: this.props.photo}}/>
+          <Image style={{ width: 75, height: 75}} source={{uri: this.props.photo}} />
           <Text>{this.props.id}</Text>
           <Text>{this.props.name}</Text>
           <Text>{this.props.email}</Text>
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   remove: {
-      borderWidth: 0
+    borderWidth: 0
   }
 });

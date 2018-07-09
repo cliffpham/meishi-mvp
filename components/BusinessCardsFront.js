@@ -13,14 +13,12 @@ export default class BusinessCardsFront extends React.Component {
 
   render() {
     return (
-      
       <View style={styles.card}>
       <Text>{this.props.id}</Text>
       <Text>{this.props.name}</Text>
       <Text>{this.props.email}</Text>
   
       </View>
-
     )
   }
 }
