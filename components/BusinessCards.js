@@ -18,7 +18,6 @@ import FlipCard from 'react-native-flip-card'
 import { Pages } from 'react-native-pages';
 
 export default class BusinessCards extends React.Component {
-
  
     render() {
       return (
@@ -103,14 +102,14 @@ height:deviceRowHeight,width:deviceWidth}}>
   
   </View>
 
-</FlipCard>
-
-      )
-    }
+      </FlipCard>
+    )
   }
+}
 
 
 const styles = StyleSheet.create({
+
     container: {
       flex: 1,
       paddingTop: 15,
@@ -157,6 +156,7 @@ const styles = StyleSheet.create({
       marginBottom: 15,
       backgroundColor: '#fff',
     },
+
     header: {
       flex: 1     
       

@@ -1,6 +1,7 @@
 // The reducers.js file is basically the schema of our database
 
 export default reducers = (state = {
+
     loggedIn: false,
     cards: [],
     user: {
@@ -38,5 +39,11 @@ export default reducers = (state = {
       case 'GET_CARDS':
       return {...state, cards: action.payload}
     }
-    return state;
+    case 'UPDATE_EMAIL':      
+      return { ...state, user: { ...state.user, email : action.payload } 
+    }
+    case 'GET_CARDS':
+    return {...state, cards: action.payload}
+  }
+  return state;
 } 

@@ -7,11 +7,12 @@ import { Alert } from 'react-native';
 // i.e. logins, logout, updating user info
 
 export function login(user){
-    return function(dispatch){
+  return function(dispatch){
     let params = {
       id: user.uid,
       name: user.displayName,
       email: '',
+
       photoUrl: user.photoURL,
       image: '',
       title: '',
@@ -26,8 +27,8 @@ export function login(user){
       token: '',
     }
 
-// how we log in the user and refer to whether they exist already and or need to be added to 
-//firebase
+  // how we log in the user and refer to whether they exist already and or need to be added to 
+  //firebase
 
     firebase.database().ref('cards/').child(user.uid).once('value', function(snapshot){
       if(snapshot.val() !== null){
@@ -37,27 +38,26 @@ export function login(user){
         dispatch({ type: 'LOGIN', user: params, loggedIn: true });
       }
     })
-    }
   }
+}
 
 export function logout(){
-    return function(dispatch){
-      firebase.auth().signOut()
-      dispatch({ type: 'LOGOUT', loggedIn: false });
-     }
-  }
+  return function(dispatch){
+    firebase.auth().signOut()
+    dispatch({ type: 'LOGOUT', loggedIn: false });
+    }
+}
 
 
 // this function is called on the Profile page and is called when the user presses a key 
 
 export function updateEmail(value){
-    return function(dispatch){
-      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ email: value });
-      dispatch({ type: 'UPDATE_EMAIL', payload: value });
-      setTimeout(function(){  
-        
-      }, 3000);
-    }
+  return function(dispatch){
+    firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ email: value });
+    dispatch({ type: 'UPDATE_EMAIL', payload: value });
+    setTimeout(function(){
+      
+    }, 3000);
   }
 
 export function updateTitle(value){
@@ -89,6 +89,7 @@ export function updateLinkTwo(value){
       }, 3000);
     }
   }
+
 // this function is called on the Home page and takes all of the current users 
 // and displays them accordingly.
 // we will need to edit this so that instead of taking all the cards it only
@@ -97,13 +98,15 @@ export function updateLinkTwo(value){
 export function getCards(){
   return function(dispatch){
     firebase.database().ref('cards').once('value', (snap) => {
-      var items = [];
-      snap.forEach((child) => {
-        item = child.val();
-        item.id = child.key;
-        items.push(item); 
-      });
-      dispatch({ type: 'GET_CARDS', payload: items });
+      if(snap) {
+        var items = [];
+        snap.forEach((child) => {
+          item = child.val();
+          item.id = child.key;
+          items.push(item); 
+        });
+        dispatch({ type: 'GET_CARDS', payload: items });
+      }
     });
   }
 }
