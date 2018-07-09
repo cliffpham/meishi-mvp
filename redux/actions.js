@@ -96,18 +96,48 @@ export function updateLinkTwo(value){
 // we will need to edit this so that instead of taking all the cards it only
 //takes the data of IDs associated with it
 
+//----------------[new-renders friends]---------------------
 export function getCards(){
   return function(dispatch){
+    
+  var friendlist = []
+  firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').once('value', (snap) => {  
+    snap.forEach((child) => {
+        if(child.node_.value_) {
+    friendlist.push(child.key) 
+    }}) })
+
     firebase.database().ref('cards').once('value', (snap) => {
       if(snap) {
         var items = [];
         snap.forEach((child) => {
+          if(friendlist.indexOf(child.val().id) !== -1){
           item = child.val();
           item.id = child.key;
           items.push(item); 
+          }
         });
         dispatch({ type: 'GET_CARDS', payload: items });
       }
     });
   }
 }
+  //----------------[new-renders friends]---------------------
+
+////////////////// [old - renders all cards]/////////////
+// export function getCards(){
+//   return function(dispatch){
+//     firebase.database().ref('cards').once('value', (snap) => {
+//       if(snap) {
+//         var items = [];
+//         snap.forEach((child) => {
+//           item = child.val();
+//           item.id = child.key;
+//           items.push(item); 
+//         });
+//         dispatch({ type: 'GET_CARDS', payload: items });
+//       }
+//     });
+//   }
+// }
+    ////////////////// [old - renders all cards]/////////////
