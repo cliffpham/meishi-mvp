@@ -14,7 +14,7 @@ import {
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import { MonoText } from '../components/StyledText';
-import { logout, updateEmail, Submit } from '../redux/actions'
+import { logout, updateEmail, updateTitle, updateLinkOne} from '../redux/actions'
 import ProfileCard from '../components/ProfileCard'
 import FlipCard from 'react-native-flip-card'
 
@@ -46,30 +46,57 @@ class Profile extends React.Component {
             <Text>{this.props.user.email}</Text>
           </View>
 
-          {/* Back Side */}
-          <View style={styles.cardBack}>
-            <ImageBackground
-              source={{uri: this.props.user.image}}
-              style={{width: '100%', height: '100%'}}
-              > 
-            <Text>{this.props.user.id}</Text>
-            <Text>{this.props.user.name}</Text>
-            <Text>{this.props.user.email}</Text>
-            </ImageBackground>
-          </View>
-        </FlipCard>
+    <View style={styles.cardBack}>
+        <ImageBackground
+          source={{uri: this.props.user.image}}
+          style={{width: '100%', height: '100%'}}
+          > 
+        <Text>{this.props.user.id}</Text>
+        <Text>{this.props.user.name}</Text>
+        <Text>{this.props.user.email}</Text>
+        </ImageBackground>
+    </View>
+  </FlipCard>
 
-        <Text style={styles.bold}>Email</Text>
+  
+    <Text style={styles.bold}>Email</Text>
+      <TextInput
+            style={styles.textInput}
+            multiline={true}
+            numberOfLines={5}
+            onChangeText={(text) => this.props.dispatch(updateEmail(text))}
+            value={this.props.user.email}/>
+    
+    <Text style={styles.bold}>Title</Text>
+      <TextInput
+            style={styles.textInput}
+            multiline={true}
+            numberOfLines={5}
+            onChangeText={(text) => this.props.dispatch(updateTitle(text))}
+            value={this.props.user.title}/>
+    
+    <Text style={styles.bold}>Link One</Text>    
+      <TextInput
+            style={styles.textInput}
+            multiline={true}
+            numberOfLines={5}
+            onChangeText={(text) => this.props.dispatch(updateLinkOne(text))}
+            value={this.props.user.linkone}/>
+
+   <Text style={styles.bold}>Link Two</Text> 
         <TextInput
-          style={styles.textInput}
-          multiline={true}
-          numberOfLines={5}
-          onChangeText={(text) => this.props.dispatch(updateEmail(text))}
-          value={this.props.user.email}/>
-        
-        <TouchableOpacity onPress={ () => this.props.dispatch(logout()) }>
-          <Text style={ styles.button }>Logout</Text>
-        </TouchableOpacity>
+            style={styles.textInput}
+            multiline={true}
+            numberOfLines={5}
+            onChangeText={(text) => this.props.dispatch(updateLinkOne(text))}
+            value={this.props.user.linktwo}/>
+      
+      
+      <TouchableOpacity onPress={ () => this.props.dispatch(logout()) }>
+      
+      
+      <Text style={ styles.button }>Logout</Text>
+      </TouchableOpacity>
       </ScrollView>
     );
   }

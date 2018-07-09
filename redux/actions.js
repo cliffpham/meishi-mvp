@@ -12,9 +12,12 @@ export function login(user){
       id: user.uid,
       name: user.displayName,
       email: '',
-      links: null,
+
       photoUrl: user.photoURL,
       image: '',
+      title: '',
+      linkone: '',
+      linktwo:'',
       notification: false,
       show: false,
       report: false,
@@ -56,8 +59,37 @@ export function updateEmail(value){
       
     }, 3000);
   }
-}
- 
+
+export function updateTitle(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ title: value });
+      dispatch({ type: 'UPDATE_TITLE', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
+export function updateLinkOne(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ linkone: value });
+      dispatch({ type: 'UPDATE_LINKONE', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
+export function updateLinkTwo(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ linktwo: value });
+      dispatch({ type: 'UPDATE_LINKTWO', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
 // this function is called on the Home page and takes all of the current users 
 // and displays them accordingly.
 // we will need to edit this so that instead of taking all the cards it only

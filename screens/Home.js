@@ -23,8 +23,10 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(getCards())
-    console.log(this.props.cards)
+    this.props.dispatch(getCards());
+    
+    console.log(this.props.cards);
+
   }
 
   render() {
@@ -44,6 +46,9 @@ class Home extends React.Component {
         email={card.email}
         photo={card.photoUrl}
         image={card.image}
+        title={card.title}
+        linkone={card.linkone}
+        linkone={card.linktwo}
         />
       ))}
       </ScrollView>
