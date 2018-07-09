@@ -14,21 +14,15 @@ import { Pages } from 'react-native-pages';
 import BusinessCards from '../components/BusinessCards'
 import Buttons from '../components/Buttons';
 
-
-
 class Home extends React.Component {
   static navigationOptions = {
     headerStyle: { height: 15 },
   
   }
 
- 
-
   componentDidMount(){
     
     this.props.dispatch(getCards());
-    
-    
     console.log(this.props.cards);
 
   }

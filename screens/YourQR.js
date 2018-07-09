@@ -1,5 +1,6 @@
 import React from 'react';
 import * as firebase from 'firebase';
+import { connect } from 'react-redux';
 import { 
  View, 
   StyleSheet,
@@ -7,7 +8,7 @@ import {
   Image,
   TouchableOpacity } from 'react-native';
 
-export default class YourQR extends React.Component {
+class YourQR extends React.Component {
 
   render() {
     return (
@@ -15,8 +16,8 @@ export default class YourQR extends React.Component {
       <View style={{backgroundColor: '#749f8d'}}/> 
         <View style={{backgroundColor: 'white'}}>
           <Image/>
-          <Text style={{fontWeight: "bold"}}>Your Name</Text>
-          <Text>Your Title</Text>
+          <Text style={{fontWeight: "bold"}}>{this.props.user.name}</Text>
+          <Text>{this.props.user.title}</Text>
           <Image
             source={{uri: 'http://api.qrserver.com/v1/create-qr-code/?size=150x150&color=749f8d&data='+ firebase.auth().currentUser.uid}}
               style={{width: 150, height: 150, marginTop: 15}}
@@ -26,6 +27,15 @@ export default class YourQR extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+ 
+  };
+}
+
+export default connect(mapStateToProps)(YourQR);
 
 const styles = StyleSheet.create({
   container: {
