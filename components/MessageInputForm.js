@@ -33,8 +33,8 @@ class MessageInputForm extends React.Component {
                     value={this.state.message}
                     placeholder="Type your message and hit ENTER"
                     ref={input => { this.textInput = input }} 
-                    onSubmitEditing={this.handleSubmit}/>
-                    
+                    onSubmitEditing={this.handleSubmit}
+                />   
             </View>
         )
     }

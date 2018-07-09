@@ -9,12 +9,10 @@ import Chat from '../screens/Chat';
 import QRcode from '../screens/QR';
 import YourQR from '../screens/YourQR'
 
-
 const HomeStack = createStackNavigator({
   Home: Home,
   QR: QRcode,
   YourQR: YourQR
-
 });
 
 HomeStack.navigationOptions = {
@@ -41,8 +39,6 @@ ProfileStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-
-      
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
@@ -51,7 +47,6 @@ ProfileStack.navigationOptions = {
     />
   ),
 };
-
 
 const ChatStack = createStackNavigator({
   Chat: Chat,

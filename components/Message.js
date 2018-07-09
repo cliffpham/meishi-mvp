@@ -9,7 +9,7 @@ import {
 // Use this function when your component is dumb as shit
 
 const Message = (props) => {
- return (
+  return (
     <View>
       <Text style={styles.userName}>{props.username}</Text>
       <Text style={styles.baseText}>{props.text}</Text>

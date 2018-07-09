@@ -55,7 +55,7 @@ export default class BusinessCards extends React.Component {
         </View>
 
         <View style={styles.main}>
-          <Image style={styles.profilePic} source={{uri: this.props.photo}}/>
+          <Image style={styles.profilePic} source={{uri: this.props.photo}} />
 
             <View style={styles.contact}>
               <Text style={styles.email}>Email: {this.props.email}</Text>
@@ -76,8 +76,8 @@ export default class BusinessCards extends React.Component {
               
                 <TouchableOpacity onPress={() => Linking.openURL('http://google.com')}>
                   <Image
-                  style={{width: 25, height: 25}}
-                  source={require('../img/github.png')}
+                    style={{width: 25, height: 25}}
+                    source={require('../img/github.png')}
                   />
                 </TouchableOpacity>
               </View>

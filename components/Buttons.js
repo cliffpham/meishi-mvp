@@ -25,7 +25,8 @@ class Buttons extends Component {
       <ButtonGroup
         onPress={this.updateIndex}
         buttons={buttons}
-        containerStyle={{height: 25, borderWidth: 0}} />
+        containerStyle={{height: 25, borderWidth: 0}}
+      />
     </View>
     )
   }

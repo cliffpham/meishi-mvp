@@ -108,20 +108,19 @@ class Chat extends React.Component {
     render() {
         return (
             <View> 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chatbox")} >
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("Chatbox")} >
                     <Text> Figure out how to change pages on press </Text> 
-                    </TouchableOpacity>
-                    <MessageList messages={this.state.messages}/>
-                    <MessageInputForm sendMessage={this.sendMessage}/> 
-                
-                    <Chatlist 
+                </TouchableOpacity>
+                <MessageList messages={this.state.messages}/>
+                <MessageInputForm sendMessage={this.sendMessage}/> 
+            
+                <Chatlist 
                     // function being passed down
                     subscribeToRoom={this.subscribeToRoom}
                     //list of rooms aka shared contacts
-                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
+                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                />
             </View>
-
-         
         );
     }
 }

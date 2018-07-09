@@ -44,15 +44,15 @@ class Home extends React.Component {
       {this.props.cards.map(card => (
         
         <BusinessCards 
-        id={card.id}
-        key={card.id}
-        name={card.name}
-        email={card.email}
-        photo={card.photoUrl}
-        image={card.image}
-        title={card.title}
-        linkone={card.linkone}
-        linkone={card.linktwo}
+          id={card.id}
+          key={card.id}
+          name={card.name}
+          email={card.email}
+          photo={card.photoUrl}
+          image={card.image}
+          title={card.title}
+          linkone={card.linkone}
+          linkone={card.linktwo}
         />
       ))}
       </ScrollView>
