@@ -59,16 +59,17 @@ export function updateEmail(value){
       
     }, 3000);
   }
+}
 
 export function updateTitle(value){
-    return function(dispatch){
-      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ title: value });
-      dispatch({ type: 'UPDATE_TITLE', payload: value });
-      setTimeout(function(){  
-        
-      }, 3000);
-    }
+  return function(dispatch){
+    firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ title: value });
+    dispatch({ type: 'UPDATE_TITLE', payload: value });
+    setTimeout(function(){  
+      
+    }, 3000);
   }
+}
 
 export function updateLinkOne(value){
     return function(dispatch){
@@ -109,4 +110,4 @@ export function getCards(){
       }
     });
   }
-}}
+}
