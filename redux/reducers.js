@@ -9,6 +9,7 @@ export default reducers = (state = {
       name: '',
       email: '',
       photoUrl: '',
+      friends: '',
       image: '',
       title: '',
       linkone: '',
