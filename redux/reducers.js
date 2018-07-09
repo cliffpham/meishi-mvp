@@ -39,11 +39,5 @@ export default reducers = (state = {
       case 'GET_CARDS':
       return {...state, cards: action.payload}
     }
-    case 'UPDATE_EMAIL':      
-      return { ...state, user: { ...state.user, email : action.payload } 
-    }
-    case 'GET_CARDS':
-    return {...state, cards: action.payload}
-  }
   return state;
 } 
