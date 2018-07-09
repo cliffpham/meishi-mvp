@@ -46,14 +46,14 @@ class Profile extends React.Component {
           </View>
 
           <View style={styles.cardBack}>
-              <ImageBackground
-                source={{uri: this.props.user.image}}
-                style={{width: '100%', height: '100%'}}
-                > 
-              <Text>{this.props.user.id}</Text>
-              <Text>{this.props.user.name}</Text>
-              <Text>{this.props.user.email}</Text>
-              </ImageBackground>
+            <ImageBackground
+              source={{uri: this.props.user.image}}
+              style={{width: '100%', height: '100%'}}
+              > 
+            <Text>{this.props.user.id}</Text>
+            <Text>{this.props.user.name}</Text>
+            <Text>{this.props.user.email}</Text>
+            </ImageBackground>
           </View>
         </FlipCard>
 
