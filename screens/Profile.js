@@ -43,6 +43,7 @@ class Profile extends React.Component {
             <Text>{this.props.user.id}</Text>
             <Text>{this.props.user.name}</Text>
             <Text>{this.props.user.email}</Text>
+            <Text>{this.props.user.title}</Text>
           </View>
 
           <View style={styles.cardBack}>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as firebase from 'firebase';
 import {
   Alert,
   Linking,
@@ -35,6 +36,8 @@ export default class QRcode extends Component {
     if (result.data !== this.state.lastScannedUrl) {
       LayoutAnimation.spring();
       this.setState({ lastScannedUrl: result.data });
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').update({[result.data]:true});
+      firebase.database().ref('cards/' + result.data + '/collection/').update({[firebase.auth().currentUser.uid]:true});
     }
   };
 

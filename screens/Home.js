@@ -22,8 +22,12 @@ class Home extends React.Component {
   
   }
 
+ 
+
   componentDidMount(){
+    
     this.props.dispatch(getCards());
+    
     
     console.log(this.props.cards);
 

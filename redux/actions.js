@@ -12,8 +12,8 @@ export function login(user){
       id: user.uid,
       name: user.displayName,
       email: '',
-
       photoUrl: user.photoURL,
+      friends: '',
       image: '',
       title: '',
       linkone: '',
@@ -98,13 +98,23 @@ export function updateLinkTwo(value){
 
 export function getCards(){
   return function(dispatch){
+    
+  var friendlist = []
+  firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').once('value', (snap) => {  
+    snap.forEach((child) => {
+        if(child.node_.value_) {
+    friendlist.push(child.key) 
+    }}) })
+
     firebase.database().ref('cards').once('value', (snap) => {
       if(snap) {
         var items = [];
         snap.forEach((child) => {
+          if(friendlist.indexOf(child.val().id) !== -1){
           item = child.val();
           item.id = child.key;
           items.push(item); 
+          }
         });
         dispatch({ type: 'GET_CARDS', payload: items });
       }
