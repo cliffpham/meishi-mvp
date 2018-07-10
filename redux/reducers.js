@@ -40,5 +40,7 @@ export default reducers = (state = {
       case 'GET_CARDS':
       return {...state, cards: action.payload}
     }
+    
+    
   return state;
 } 

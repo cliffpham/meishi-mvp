@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import { getCards } from '../redux/actions';
 import {
   Alert,
   Linking,
@@ -38,6 +39,7 @@ export default class QRcode extends Component {
       this.setState({ lastScannedUrl: result.data });
       firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').update({[result.data]:true});
       firebase.database().ref('cards/' + result.data + '/collection/').update({[firebase.auth().currentUser.uid]:true});
+     
     }
   };
 

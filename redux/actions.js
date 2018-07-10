@@ -100,13 +100,13 @@ export function getCards(){
   return function(dispatch){
     
   var friendlist = []
-  firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').once('value', (snap) => {  
+  firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').on('value', (snap) => {  
     snap.forEach((child) => {
         if(child.node_.value_) {
     friendlist.push(child.key) 
     }}) })
 
-    firebase.database().ref('cards').once('value', (snap) => {
+    firebase.database().ref('cards').on('value', (snap) => {
       if(snap) {
         var items = [];
         snap.forEach((child) => {
@@ -116,8 +116,9 @@ export function getCards(){
           items.push(item); 
           }
         });
-        dispatch({ type: 'GET_CARDS', payload: items });
+        dispatch({ type: 'GET_CARDS', payload: items },{ allowMore: true });
       }
     });
   }
 }
+

@@ -19,7 +19,8 @@ class Home extends React.Component {
     headerStyle: { height: 15 },
   
   }
-
+  
+ 
   componentDidMount(){
     
     this.props.dispatch(getCards());
