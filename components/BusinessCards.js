@@ -11,22 +11,36 @@ import {
     Linking,
     TouchableHighlight,
     deviceRowHeight,
-    deviceWidth
+    deviceWidth,
+    Modal
   } from 'react-native';
-
+  
 import FlipCard from 'react-native-flip-card'
 import { Pages } from 'react-native-pages';
+import { withNavigation } from 'react-navigation';
 
-export default class BusinessCards extends React.Component {
+class BusinessCards extends React.Component {
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
  
   render() {
     return (
-
+      <View>
       <FlipCard 
         style={styles.remove}
         flipHorizontal={true}
         flipVertical={false}
+        flip={false}
+        flipCount = {0}
         perspective={1000}
+        onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
+        
       >
         {/* Face Side */}
 
@@ -36,9 +50,12 @@ export default class BusinessCards extends React.Component {
           style={styles.cardView}
         > 
           <View style={{backgroundColor:'rgba(0,0,0,.4)',
-          height:deviceRowHeight,width:deviceWidth}}>
+          height:deviceRowHeight,width:deviceWidth, paddingLeft: 5}}>
             <Text style={styles.cName}>{this.props.name}</Text>
             <Text style={styles.cInfo}>{this.props.title}</Text>
+
+
+
           </View>
 
         </ImageBackground>
@@ -74,13 +91,25 @@ export default class BusinessCards extends React.Component {
 
               <View style={styles.icon}>
               
-                <TouchableOpacity onPress={() => Linking.openURL('https://github.com/')}>
+                <TouchableOpacity onPress={() => Linking.openURL('https://www.github.com/')}>
                   <Image
                     style={{width: 25, height: 25}}
                     source={require('../img/github.png')}
                   />
                 </TouchableOpacity>
+                
               </View>
+
+              <View style={styles.icon}>
+              
+              <TouchableHighlight onPress={() => this.setModalVisible(true)}>
+              <Image
+              source={require('../img/qrcode.png')}
+                style={{width: 30, height: 30}}
+              />
+              </TouchableHighlight>
+              
+            </View>
             </View>
 
           </View>
@@ -88,16 +117,47 @@ export default class BusinessCards extends React.Component {
         </View>
         
         <View style={styles.additional}>
-          <Text style={styles.aboutMe}>"{this.props.aboutMe}"</Text>
-          
+          <Text style={styles.aboutMe}>{this.props.aboutMe}</Text>
+
+
         </View>
-        
+
         </View>
 
       </FlipCard>
+
+      <Modal
+        animationType="fade"
+        transparent={false}
+        visible={this.state.modalVisible}
+        onRequestClose={() => {
+          alert('Modal has been closed.');
+        }}>
+        
+        <View style={styles.modalContainer}>
+       
+          
+          <Image
+          source={{uri: 'http://api.qrserver.com/v1/create-qr-code/?size=150x150&color=3171B1&data='+ this.props.id}}
+            style={{width: 150, height: 150, alignSelf: 'center'}}
+          />
+        
+          </View>
+
+          <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(!this.state.modalVisible);
+          }}>
+          <Text style={styles.button}>Return</Text>
+        </TouchableHighlight>
+       
+      </Modal>
+      </View>
     )
   }
 }
+
+export default BusinessCards;
 
 const styles = StyleSheet.create({
 
@@ -106,6 +166,14 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
     flexDirection: 'column-reverse'
+  },
+
+  modalContainer : {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   cardFront: {
     height: 287,
@@ -206,15 +274,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: '400',
     fontSize: 16,
+    fontStyle: 'italic'
 
     
   },
   button: {
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: '#749F8D',
+    borderColor: '#A0A0A0',
     textAlign: 'center',
-    color: '#749F8D',
+    color: '#A0A0A0',
     padding: 10,
     margin: 5,
     fontSize: 18,

@@ -100,11 +100,9 @@ class Profile extends React.Component {
       </View>
           </View>
           </View>
+          <Text style={{alignSelf: 'center', paddingTop: 10, fontStyle: 'italic', fontSize: 16}}>{this.props.user.aboutMe}</Text>
         </View>
        
-      
-         <Text>{this.props.user.aboutMe}</Text>
-          <Text>{this.props.user.id}</Text>
 
         </View>
         </FlipCard>
@@ -170,8 +168,7 @@ const styles = StyleSheet.create({
   },
   cardBack: {
 
-    height: 230,
-    width: 404,
+    height: 287,
     justifyContent: 'flex-end',
     borderWidth: 1,
     flex: 1,
@@ -220,8 +217,7 @@ const styles = StyleSheet.create({
   },
   
   cardFront: {
-    height: 230,
-    width: 404,
+    height: 287,
     flexWrap: 'wrap',
     borderWidth: 1,
     flex: 1,

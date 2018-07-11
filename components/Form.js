@@ -90,7 +90,7 @@ class Form extends React.Component {
               multiline={true}
               numberOfLines={10}
               onChangeText={(text) => this.props.dispatch(updateAboutMe(text))}
-              value={this.props.phone}
+              value={this.props.aboutMe}
             />
             
             
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
 
   buttons: {
     flexDirection: 'row-reverse',
-    paddingBottom: 15
+    paddingBottom: 12
   },
 
   buttonOne: {
