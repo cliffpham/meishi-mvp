@@ -10,6 +10,7 @@ const middleware = applyMiddleware(thunkMiddleware)
 const store = createStore(reducers, middleware);
 console.ignoredYellowBox = ['Setting a timer'];
 
+
 export default class App extends React.Component {
 
   render() {

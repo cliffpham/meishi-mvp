@@ -24,7 +24,6 @@ HomeStack.navigationOptions = {
   },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-    onPress={console.log('hello')}
       focused={focused}
       name={Platform.OS === 'ios' ? `ios-home${focused ? '' : '-outline'}` : 'md-link'}
     />

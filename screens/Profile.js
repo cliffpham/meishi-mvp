@@ -9,14 +9,18 @@ import {
   TouchableOpacity,
   View,
   Alert,
-  ImageBackground
+  ImageBackground,
+  deviceRowHeight,
+  deviceWidth, 
+  Picker
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
+import { logout, updateEmail, updateTitle, updateLinkOne, updateImage} from '../redux/actions'
 import { MonoText } from '../components/StyledText';
-import { logout, updateEmail, updateTitle, updateLinkOne} from '../redux/actions'
 import ProfileCard from '../components/ProfileCard'
 import FlipCard from 'react-native-flip-card'
+import Form from '../components/Form'
 
 class Profile extends React.Component {
   render() {
@@ -25,11 +29,24 @@ class Profile extends React.Component {
       //a non-scrollable ScrollView will hide the keyboard
       <ScrollView 
         style={styles.container}
-        scrollEnabled={false}
-        contentContainerStyle={styles.main}
+        // scrollEnabled={false}
+        // contentContainerStyle={styles.main}
       >
-     
-        <Text>Tap On Your Card to See the Other Side</Text>
+      
+      <Form
+      id={this.props.user.id}
+      key={this.props.user.id}
+      name={this.props.user.name}
+      email={this.props.user.email}
+      photo={this.props.user.photoUrl}
+      image={this.props.user.image}
+      title={this.props.user.title}
+      phone={this.props.user.phone}
+      aboutMe={this.props.user.aboutMe}
+      linkone={this.props.user.linkone}
+      linkone={this.props.user.linktwo}
+      />
+       
         <FlipCard 
           style={styles.remove}
           flipHorizontal={true}
@@ -39,64 +56,84 @@ class Profile extends React.Component {
           {/* Face Side */}
       
           <View style={styles.cardFront}>
-            <Image style={{ width: 75, height: 75}} source={{uri: this.props.user.photoUrl}}/>
-            <Text>{this.props.user.id}</Text>
-            <Text>{this.props.user.name}</Text>
-            <Text>{this.props.user.email}</Text>
-            <Text>{this.props.user.title}</Text>
-          </View>
+          <ImageBackground
+          source={{uri: this.props.user.image}}
+          style={{width: '100%', height: '100%'}}
+        > 
+      
+        </ImageBackground>
+        </View>
+
+
+
+             {/* Back Side */}
 
           <View style={styles.cardBack}>
-            <ImageBackground
-              source={{uri: this.props.user.image}}
-              style={{width: '100%', height: '100%'}}
-            > 
-            <Text>{this.props.user.id}</Text>
-            <Text>{this.props.user.name}</Text>
-            <Text>{this.props.user.email}</Text>
-            </ImageBackground>
+         
+          <View style={styles.header}>
+          <Text style={styles.name}>{this.props.user.name}</Text>
+          <Text style={styles.title}>{this.props.user.title}</Text>
+          <View style={styles.main}>
+          <Image style={styles.profilePic} source={{uri: this.props.user.photoUrl}} />
+          <View style={styles.contact}>
+          <Text style={styles.email}>Email: {this.props.user.email}</Text>
+          <Text style={styles.email}>Phone: {this.props.user.phone}</Text>
+          <View style={styles.icons}>
+          <View style={styles.icon}>
+            <TouchableOpacity onPress={() => Linking.openURL({uri: this.props.photo})}>
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../img/linkedin.png')}
+            />
+            </TouchableOpacity>
           </View>
+
+        <View style={styles.icon}>
+        
+          <TouchableOpacity onPress={() => Linking.openURL('http://google.com')}>
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../img/github.png')}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+          </View>
+          </View>
+        </View>
+       
+      
+         <Text>{this.props.user.aboutMe}</Text>
+          <Text>{this.props.user.id}</Text>
+
+        </View>
         </FlipCard>
 
-        <Text style={styles.bold}>Email</Text>
-        <TextInput
-          style={styles.textInput}
-          multiline={true}
-          numberOfLines={5}
-          onChangeText={(text) => this.props.dispatch(updateEmail(text))}
-          value={this.props.user.email}
-        />
+        <View>
+        <View>
+        <Text style={styles.select}> Give Your Card Some Color </Text>
+        <Picker
+        selectedValue={this.props.user.image}
         
-        <Text style={styles.bold}>Title</Text>
-        <TextInput
-          style={styles.textInput}
-          multiline={true}
-          numberOfLines={5}
-          onChangeText={(text) => this.props.dispatch(updateTitle(text))}
-          value={this.props.user.title}
-        />
-        
-        <Text style={styles.bold}>Link One</Text>    
-        <TextInput
-          style={styles.textInput}
-          multiline={true}
-          numberOfLines={5}
-          onChangeText={(text) => this.props.dispatch(updateLinkOne(text))}
-          value={this.props.user.linkone}
-        />
+        style={styles.picker}
+        mode="dropdown"
+        itemStyle={{ backgroundColor: 'white', marginLeft: 0, paddingLeft: 15,  borderRadius: 5}}
+        onValueChange={(itemValue) => this.props.dispatch(updateImage(itemValue))}>
+        <Picker.Item label="Creative Drool" value="https://i.imgur.com/3cwcCwc.jpg" />
+        <Picker.Item label="Subtly Loud" value="https://i.imgur.com/g26WauY.jpg" />
+        <Picker.Item label="KimoKawa" value="https://images2.alphacoders.com/446/thumb-1920-446324.jpg" />
+        <Picker.Item label="Rad Dad" value="https://i.imgur.com/U1A72z4.jpg" />
+        <Picker.Item label="Lazy Daisey" value="https://i.imgur.com/DVQmsCG.jpg" />
+        <Picker.Item label="Chicken" value="https://i.imgur.com/7Or3o2H.jpg" />
+        </Picker>
+        </View>
 
-        <Text style={styles.bold}>Link Two</Text> 
-        <TextInput
-          style={styles.textInput}
-          multiline={true}
-          numberOfLines={5}
-          onChangeText={(text) => this.props.dispatch(updateLinkOne(text))}
-          value={this.props.user.linktwo}
-        />
+
+        <View>
+
+        </View>
+        </View>
       
-        <TouchableOpacity onPress={ () => this.props.dispatch(logout()) }>
-          <Text style={ styles.button }>Logout</Text>
-        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -114,24 +151,80 @@ export default connect(mapStateToProps)(Profile);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
+    paddingTop: 0
+    
   },
-  cardFront: {
+  picker: {
+    height: 100,
+    width: 300,
+    alignSelf: 'center'
+  },
+  select: {
+    color: 'black',
+    fontWeight: '700',
+    fontSize: 24,
+    alignSelf: 'center',
+    paddingTop: 10,
+    paddingBottom:10
+  },
+  cardBack: {
+
     height: 230,
+    width: 404,
     justifyContent: 'flex-end',
-    flex: 1,
     borderWidth: 1,
-    borderColor: 'black',
+    flex: 1,
     margin: 5,
     backgroundColor: '#fff',
   },
-  cardBack: {
+  header: {
+    flex: 1     
+  },
+    name: {
+    fontWeight: '700',
+    fontSize: 28,
+    marginTop:10,
+    marginRight: 10,
+    alignSelf: 'flex-end'
+
+  },
+  title: {
+    fontWeight: '600',
+    fontSize: 24,
+    marginRight: 10,
+    alignSelf: 'flex-end'
+  },
+  main: {
+    flexDirection: 'row',
+    flexWrap:'wrap'
+  },
+
+  profilePic: {
+    alignSelf: 'flex-start',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginLeft: 15,
+    marginRight: 5
+  },
+  contact: {
+    alignSelf: 'center',
+  },
+  icons: {
+    flexDirection: 'row',
+    marginTop: 5
+  },
+  icon: {
+    marginRight: 15
+  },
+  
+  cardFront: {
     height: 230,
-    justifyContent: 'flex-end',
-    flex: 1,
+    width: 404,
+    flexWrap: 'wrap',
     borderWidth: 1,
-    borderColor: 'black',
+    flex: 1,
     margin: 5,
     backgroundColor: '#fff',
   },
@@ -146,7 +239,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  imageSelector: {
+    width: 100,
+    height: 100,
+    borderWidth: 1,
+    borderColor: 'black',
+  },
   remove: {
-    borderWidth: 0
+    borderWidth: 0,
+    flex: 1
   }
 });

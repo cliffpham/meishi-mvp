@@ -13,7 +13,7 @@ class YourQR extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <View style={{backgroundColor: '#749f8d'}}/> 
+      <View style={{backgroundColor: '#0084FF'}}/> 
         <View style={{backgroundColor: 'white'}}>
           <Image/>
           <Text style={{fontWeight: "bold"}}>{this.props.user.name}</Text>

@@ -24,7 +24,6 @@ class Home extends React.Component {
   componentDidMount(){
     
     this.props.dispatch(getCards());
-    console.log(this.props.cards);
 
   }
 
@@ -43,8 +42,10 @@ class Home extends React.Component {
           key={card.id}
           name={card.name}
           email={card.email}
+          phone={card.phone}
           photo={card.photoUrl}
           image={card.image}
+          aboutMe={card.aboutMe}
           title={card.title}
           linkone={card.linkone}
           linkone={card.linktwo}

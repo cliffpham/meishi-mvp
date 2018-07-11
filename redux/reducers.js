@@ -10,10 +10,12 @@ export default reducers = (state = {
       email: '',
       photoUrl: '',
       friends: '',
+      phone: '',
       image: '',
       title: '',
       linkone: '',
       linktwo:'',
+      aboutMe:'',
       notification: false,
       show: false,
       report: false,
@@ -35,7 +37,16 @@ export default reducers = (state = {
       return { ...state, user: { ...state.user, title : action.payload } 
     }
       case 'UPDATE_LINKONE':      
-      return { ...state, user: { ...state.user, linkone : action.payload }, user: { ...state.user, linktwo : action.payload } 
+      return { ...state, user: { ...state.user, linkone : action.payload }
+    }
+      case 'UPDATE_IMAGE':      
+      return { ...state, user: { ...state.user, image : action.payload }
+    }
+      case 'UPDATE_PHONE':      
+      return { ...state, user: { ...state.user, phone : action.payload }
+    }
+      case 'UPDATE_ABOUTME':      
+      return { ...state, user: { ...state.user, aboutMe : action.payload }
     }
       case 'GET_CARDS':
       return {...state, cards: action.payload}

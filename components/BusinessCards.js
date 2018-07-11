@@ -64,7 +64,7 @@ export default class BusinessCards extends React.Component {
 
               <View style={styles.icons}>
                 <View style={styles.icon}>
-                  <TouchableOpacity onPress={() => Linking.openURL({uri: this.props.photo})}>
+                  <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/')}>
                   <Image
                     style={{width: 25, height: 25}}
                     source={require('../img/linkedin.png')}
@@ -74,7 +74,7 @@ export default class BusinessCards extends React.Component {
 
               <View style={styles.icon}>
               
-                <TouchableOpacity onPress={() => Linking.openURL('http://google.com')}>
+                <TouchableOpacity onPress={() => Linking.openURL('https://github.com/')}>
                   <Image
                     style={{width: 25, height: 25}}
                     source={require('../img/github.png')}
@@ -88,8 +88,8 @@ export default class BusinessCards extends React.Component {
         </View>
         
         <View style={styles.additional}>
-          <Text style={styles.aboutMe}>Short one to two sentence description about the specific person and what they are about</Text>
-          <Text>{this.props.id}</Text>
+          <Text style={styles.aboutMe}>"{this.props.aboutMe}"</Text>
+          
         </View>
         
         </View>
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
   cardBack: {
     height: 287,
     flex: 1,
-
     flexWrap: 'wrap', 
     borderWidth: 1,
     borderColor: 'black',
@@ -183,7 +182,7 @@ const styles = StyleSheet.create({
   },
   contact: {
     marginTop: 45,
-    paddingLeft: 6,
+    paddingLeft: 0,
     alignSelf: 'center',
   },
   icons: {
@@ -199,14 +198,15 @@ const styles = StyleSheet.create({
   additional: {
     flex: 3,
     marginTop: 15,
-    paddingLeft: 5
+    paddingLeft: 5,
+    paddingTop: 10
   },
 
   aboutMe: {
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     fontWeight: '400',
-    fontSize: 14,
-    paddingRight: 20
+    fontSize: 16,
+
     
   },
   button: {

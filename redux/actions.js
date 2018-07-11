@@ -12,12 +12,14 @@ export function login(user){
       id: user.uid,
       name: user.displayName,
       email: '',
+      phone: '',
       photoUrl: user.photoURL,
       friends: '',
       image: '',
       title: '',
       linkone: '',
       linktwo:'',
+      aboutMe: '',
       notification: false,
       show: false,
       report: false,
@@ -85,6 +87,36 @@ export function updateLinkTwo(value){
     return function(dispatch){
       firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ linktwo: value });
       dispatch({ type: 'UPDATE_LINKTWO', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
+export function updatePhone(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ phone: value });
+      dispatch({ type: 'UPDATE_PHONE', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
+export function updateAboutMe(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ aboutMe: value });
+      dispatch({ type: 'UPDATE_ABOUTME', payload: value });
+      setTimeout(function(){  
+        
+      }, 3000);
+    }
+  }
+
+export function updateImage(value){
+    return function(dispatch){
+      firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ image: value });
+      dispatch({ type: 'UPDATE_IMAGE', payload: value });
       setTimeout(function(){  
         
       }, 3000);
