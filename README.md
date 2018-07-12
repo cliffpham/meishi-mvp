@@ -42,12 +42,17 @@ const firebaseConfig = {
 module.exports = firebaseConfig
 
 ```
+To use Meishi, you will need to download the Expo client app for your smart phone. 
+
+Open Expo XDE and click Open existing project..., then give it the directory to which you cloned this repository.
+
+Expo XDE will start the app. Once it has completed, hit the Share button to send the app to your phone.
 
 **Screenshots**
 
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot1.png' width='50%' style='border: 1px solid gray'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot2.png' width='50%' style='border: 1px solid gray'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot3.png' width='50%' style='border: 1px solid gray'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot1.png' width='50%'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot2.png' width='50%'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot3.png' width='50%'>
 
 **Team**
 
