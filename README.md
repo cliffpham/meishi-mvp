@@ -45,9 +45,9 @@ module.exports = firebaseConfig
 
 **Screenshots**
 
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot1.png' width='50%'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot2.png' width='50%'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot3.png' width='50%'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot1.png' width='50%' style='border: 1px solid gray'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot2.png' width='50%' style='border: 1px solid gray'>
+<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot3.png' width='50%' style='border: 1px solid gray'>
 
 **Team**
 
