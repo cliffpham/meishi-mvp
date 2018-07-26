@@ -50,7 +50,7 @@ Expo XDE will start the app. Once it has completed, hit the Share button to send
 
 **Gif**
 
-<img src='https://github.com/tomkim825/meishi/blob/master/demo.gif?raw=true' width='50%'>
+<img src='https://github.com/tomkim825/meishi/blob/master/demo.gif?raw=true' width='33%'>
 
 **Team**
 
