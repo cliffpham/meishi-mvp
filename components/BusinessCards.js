@@ -1,4 +1,7 @@
 import React from 'react';
+import * as firebase from 'firebase';
+import { connect } from 'react-redux';
+import { getCards } from '../redux/actions';
 
 import { 
     Text, 
@@ -12,7 +15,8 @@ import {
     TouchableHighlight,
     deviceRowHeight,
     deviceWidth,
-    Modal
+    Modal,
+    Alert
   } from 'react-native';
   
 import FlipCard from 'react-native-flip-card'
@@ -26,6 +30,12 @@ class BusinessCards extends React.Component {
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  componentDidMount(){
+    
+    this.props.dispatch(getCards());
+
   }
 
  
@@ -110,6 +120,23 @@ class BusinessCards extends React.Component {
               </TouchableHighlight>
               
             </View>
+
+            <View style={styles.icon}>
+              
+            <TouchableHighlight onPress={() => {
+              Alert.alert('Removed Card');
+              firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').update({[this.props.id]:false});
+              this.props.dispatch(getCards());
+            }}>
+            <Image
+            source={require('../img/delete.png')}
+              style={{width: 24, height: 24, marginTop: 2}}
+            />
+            </TouchableHighlight>
+            
+          </View>
+
+
             </View>
 
           </View>
@@ -157,7 +184,14 @@ class BusinessCards extends React.Component {
   }
 }
 
-export default BusinessCards;
+function mapStateToProps(state) {
+  return {
+    cards: state.cards,
+ 
+  };
+}
+
+export default connect(mapStateToProps)(BusinessCards);
 
 const styles = StyleSheet.create({
 
@@ -230,7 +264,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontWeight: '600',
-    fontSize: 24,
+    fontSize: 20,
     marginRight: 10,
     alignSelf: 'flex-end'
   },
@@ -273,7 +307,7 @@ const styles = StyleSheet.create({
   aboutMe: {
     alignSelf: 'center',
     fontWeight: '400',
-    fontSize: 16,
+    fontSize: 14,
     fontStyle: 'italic'
 
     

@@ -80,7 +80,7 @@ class Profile extends React.Component {
           <Text style={styles.email}>Phone: {this.props.user.phone}</Text>
           <View style={styles.icons}>
           <View style={styles.icon}>
-            <TouchableOpacity onPress={() => Linking.openURL({uri: this.props.photo})}>
+            <TouchableOpacity>
             <Image
               style={{width: 25, height: 25}}
               source={require('../img/linkedin.png')}
@@ -90,7 +90,7 @@ class Profile extends React.Component {
 
         <View style={styles.icon}>
         
-          <TouchableOpacity onPress={() => Linking.openURL('http://google.com')}>
+          <TouchableOpacity>
             <Image
               style={{width: 25, height: 25}}
               source={require('../img/github.png')}
@@ -119,10 +119,19 @@ class Profile extends React.Component {
         onValueChange={(itemValue) => this.props.dispatch(updateImage(itemValue))}>
         <Picker.Item label="Creative Drool" value="https://i.imgur.com/3cwcCwc.jpg" />
         <Picker.Item label="Subtly Loud" value="https://i.imgur.com/g26WauY.jpg" />
+        <Picker.Item label="Hurt Schtummy" value="https://i.imgur.com/qneFWhl.jpg" />
         <Picker.Item label="KimoKawa" value="https://images2.alphacoders.com/446/thumb-1920-446324.jpg" />
+        <Picker.Item label="Vectory" value="https://i.imgur.com/Vt112CC.png" />
+        <Picker.Item label="Big O" value="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af485355b45dcffa63adcb990631bea7&auto=format&fit=crop&w=2866&q=80" />
+        <Picker.Item label="Skyline" value="https://images.unsplash.com/photo-1441484295955-db07de1fdbad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf92d3187d1e3d66c11350e493bb2180&auto=format&fit=crop&w=2850&q=80" />
+        <Picker.Item label="Blue Heron" value="https://i.imgur.com/ofpyJwN.jpg" />
+        <Picker.Item label="Guernville" value="https://i.imgur.com/huBNmnI.jpg" />
+        <Picker.Item label="Phonet" value="https://i.imgur.com/OrRRXUN.jpg" />
+        <Picker.Item label="The Left Leg of Exodia" value="https://i.imgur.com/bRLWA8S.jpg" />
+        <Picker.Item label="Rotter" value="https://i.imgur.com/kTrB8vt.jpg" />
         <Picker.Item label="Rad Dad" value="https://i.imgur.com/U1A72z4.jpg" />
         <Picker.Item label="Lazy Daisey" value="https://i.imgur.com/DVQmsCG.jpg" />
-        <Picker.Item label="Chicken" value="https://i.imgur.com/7Or3o2H.jpg" />
+        <Picker.Item label="Chicken" value="https://i.imgur.com/22PhsKm.jpg" />
         </Picker>
         </View>
 
@@ -170,7 +179,6 @@ const styles = StyleSheet.create({
 
     height: 287,
     justifyContent: 'flex-end',
-    borderWidth: 1,
     flex: 1,
     margin: 5,
     backgroundColor: '#fff',
@@ -219,7 +227,6 @@ const styles = StyleSheet.create({
   cardFront: {
     height: 287,
     flexWrap: 'wrap',
-    borderWidth: 1,
     flex: 1,
     margin: 5,
     backgroundColor: '#fff',

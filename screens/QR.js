@@ -39,6 +39,7 @@ export default class QRcode extends Component {
       this.setState({ lastScannedUrl: result.data });
       firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/collection/').update({[result.data]:true});
       firebase.database().ref('cards/' + result.data + '/collection/').update({[firebase.auth().currentUser.uid]:true});
+      Alert.alert('New Card Added!');
      
     }
   };
@@ -75,8 +76,6 @@ export default class QRcode extends Component {
 ///////////////////////Code for after QR code is scanned//////////////////
 //////////////////////////////////////////////////////////////////////////
 
-// i think we can pull data from this call right here
-//alert scan succesful + do a call?
 
   _handlePressUrl = () => {
     Alert.alert(
