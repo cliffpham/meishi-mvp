@@ -48,11 +48,9 @@ Open Expo XDE and click Open existing project..., then give it the directory to 
 
 Expo XDE will start the app. Once it has completed, hit the Share button to send the app to your phone.
 
-**Screenshots**
+**Gif**
 
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot1.png' width='50%'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot2.png' width='50%'>
-<img src='https://github.com/cliffpham/meishi-mvp/blob/master/assets/images/screenshot3.png' width='50%'>
+<img src='https://github.com/tomkim825/meishi/blob/master/demo.gif?raw=true' width='33%'>
 
 **Team**
 
