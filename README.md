@@ -57,7 +57,7 @@ Expo XDE will start the app. Once it has completed, hit the Share button to send
 * Cliff Pham - https://github.com/cliffpham/
 * Thomas Kim - https://github.com/tomkim825
 * Chris Huynh - https://github.com/chuynh18/
-* Jerauld Manansala ("Julien") - https://github.com/jerauld  
+* Julien Shim - https://github.com/julienshim
 
 **License**
 
